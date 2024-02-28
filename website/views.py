@@ -2,8 +2,6 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate , login , logout
 from django.contrib import messages
 
-
-
 def home(request):
 
     if request.method == "POST":
@@ -22,7 +20,7 @@ def home(request):
             messages.success(request, "There was an Error Logging in, Please try again")
             redirect('home')
     else:
-
+  
         return render(request, 'home.html' , {})
 # def login_user(request): 
 #     pass
@@ -30,4 +28,8 @@ def home(request):
 
 
 def logout_user(request):
-    pass
+    logout(request)
+    messages.success(request , "You Have been Logged out...")
+
+def register_user(request):
+    return render(request, 'register.html' , {})
