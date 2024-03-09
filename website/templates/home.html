@@ -2,24 +2,44 @@
 
 {% block content %}
 
-<br/>
-<div class = "col-md-6 offset-md-3">
 
 {% if user.is_authenticated %}
 
-<h1>Records... </h1>
-{% if records %}
-    {%for record in records %}
-      {{ record.first_name }}
-      {{ record.last_name }}
-      {{ record.email }}
-      {{ record.phone }}
-      {{ record.address }}
-      {{ record.city }}
-      {{ record.state }}
-      {{ record.zicode }} <br/>
-    {% endfor %}
-{% endif %}
+{% comment %} <h1>Records... </h1> {% endcomment %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+      <th scope="col">Zipcode</th>
+      <th scope="col">Created At</th>
+      <th scope="col">ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {% if records %}
+        {%for record in records %}
+            {{ record.first_name }}
+            {{ record.last_name }}
+            {{ record.email }}
+            {{ record.phone }}
+            {{ record.address }}
+            {{ record.city }}
+            {{ record.state }}
+            {{ record.zicode }} <br/><br/>
+        {% endfor %}
+      {% endif %}
+    </tr>
+  <tbody/>
+<table/>
+
+
 
 {%else %} 
 <br/>
@@ -46,7 +66,7 @@
 
 </form>
 
-</div>
+
 
 {% endif %}
 
